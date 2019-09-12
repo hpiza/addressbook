@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Libreta de direcciones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <br>
+    <div class="container" style="width:300px">
+        <div class="card text-center">
+            <div class="card-body">
+                <h4 class="card-title">Libreta de direcciones</h4> <br>
+                <p>
+                    <button id="btnFamilyContact" type="button" class="btn btn-danger btn-block" 
+                            onclick="showPage(1)">Familia y amigos</button> <p>
+                    <button id="btnWorkContact" type="button" class="btn btn-info btn-block"
+                            onclick="showPage(2)">Compañeros de trabajo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(id) {
+            if(id == 1) location.href = "FamilyContact.html";
+            else location.href = "WorkContact.html"
+        }
+    </script>
+</body>
+
+</html>

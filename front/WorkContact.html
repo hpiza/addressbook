@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Libreta de direcciones</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="WorkContact.js"></script>
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <!-- Ventana modal para añadir y modificar datos de contactos -->
+        <!-- Se mostrará al presionar el botón Añadir o el de Editar (con diferente status) -->
+        <div class="modal fade" id="addEditForm" tabindex="-1" role="dialog" aria-labelledby="addEditFormTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Registro de usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form onsubmit="saveContactData(); return false;">
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="form-group">
+                                    <label for="">Nombre:</label>
+                                    <input type="text" name="contactName" id="contactName" class="form-control" placeholder=""
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Apellido paterno:</label>
+                                    <input type="text" name="firstLastName" id="firstLastName" class="form-control"
+                                        placeholder="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Apellido materno:</label>
+                                    <input type="text" name="secondLastName" id="secondLastName" class="form-control"
+                                        placeholder="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Teléfono:</label>
+                                    <input type="text" name="phone" id="phone" class="form-control" placeholder=""
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Domicilio:</label>
+                                    <input type="text" name="address" id="address" class="form-control" placeholder="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Empresa:</label>
+                                    <input type="text" name="companyName" id="companyName" class="form-control" placeholder="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Área:</label>
+                                    <input type="text" name="area" id="area" class="form-control" placeholder="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Sector:</label>
+                                    <input type="text" name="businessSector" id="businessSector" class="form-control" placeholder="" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <!-- Sección de búsqueda de contactos -->
+            <div class="card-body">
+                <h4 class="card-title">Libreta de direcciones de compañeros de trabajo</h4>
+                <div class="row mb-2">
+                    <input type="text" class="form-control col-4 mr-2" name="" id="txtNameToFind"
+                        placeholder="Buscar por nombre">
+                    <button id="btnFind" type="button" class="btn btn-primary">Buscar</button>
+                </div>
+                <div class="row mb-2">
+                    <div id="btnNuevo" class="col-2 btn btn-success" data-toggle="modal" data-target="#addEditForm">
+                        Añadir contacto
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- Detalle de los contactos enlistados -->
+            <ul id="listaContactos" class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-2">
+                            <p class="card-text">Nombre completo:</p>
+                            <p class="card-text">Teléfono:</p>
+                            <p class="card-text">Domicilio:</p>
+                            <p class="card-text">Compañía:</p>
+                            <p class="card-text">Area:</p>
+                            <p class="card-text">Sector:</p>
+                        </div>
+                        <div class="col-8">
+                            Nombre </p>
+                            Telefono </p>
+                            Domicilio </p>
+                            Compañía </p>
+                            Área </p>
+                            Sector </p>
+                        </div>
+                        <div class="col-2 ">
+                            <div class="row mb-2">
+                                <div class="col-6 btn btn-primary">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 btn btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="WorkContactActions.js"></script>
+
+    <!-- incluir librerías de jQuery, Popper y BootStrap que harán posible la ventana modal -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
