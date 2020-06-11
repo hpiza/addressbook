@@ -1,0 +1,99 @@
+# Test FamilyContact API
+
+###
+GET http://localhost:8085/family/search/jo
+
+###
+PUT http://localhost:8085/family/update/1
+Content-Type: application/json;
+
+{
+    "name":"Jose Miguel",
+    "firstLastName":"Gomez",
+    "secondLastName":"Marin",
+    "address":"Av Hidalgo 5763 Zona Centro",
+    "phone":"3336573738",
+    "isFriend":"false"
+}
+
+###
+DELETE http://localhost:8085/family/delete/4
+
+###
+POST http://34.219.143.42:8085/family/add
+Content-Type: application/json;
+
+{
+    "name":"José Carlos",
+    "firstLastName":"Hernández",
+    "secondLastName":"Ibarra",
+    "address":"Av. López Mateos Sur 6378 Col. Bugambilias",
+    "phone":"3336694848",
+    "friend":"false"
+}
+
+{
+    "name":"José Miguel",
+    "firstLastName":"Gómez",
+    "secondLastName":"Marín",
+    "address":"Av. Hidalgo 5763 Zona Centro",
+    "phone":"3336573737",
+    "friend":"true"
+}
+
+{
+    "name":"Luis Dionisio",
+    "firstLastName":"Rodríguez",
+    "secondLastName":"De la Peña",
+    "address":"Josefa Ortiz de Domínguez 1438 Zona Oblatos",
+    "phone":"3336574738",
+    "friend":"false"
+}
+
+# Test WorkContact API
+###
+GET http://18.237.96.172:8085/work/search/o
+
+###
+DELETE http://localhost:8085/work/delete/9
+
+###
+PUT http://localhost:8085/work/update/9
+Content-Type: application/json;
+
+{
+    "name":"Hector Victor",
+    "firstLastName":"Castillo",
+    "secondLastName":"Perales",
+    "address":"Av. Xola 234 Col del Valle",
+    "phone":"5556172800",
+    "companyName":"Embotelladora Coca-cola",
+    "area":"Contabilidad",
+    "businessSector":"Líquidos gaseosos azucarados"
+}
+
+###
+POST http://localhost:8085/work/add
+Content-Type: application/json;
+
+{
+    "name":"Francisco",
+    "firstLastName":"Carranza",
+    "secondLastName":"Zapata",
+    "address":"Cerrada de los Laureles 56 Col. Imperial",
+    "phone":"8886173413",
+    "companyName":"Teléfonos de México",
+    "area":"Recursos humanos",
+    "businessSector":"Telecomunicaciones"
+}
+
+{
+    "name":"Héctor Víctor",
+    "firstLastName":"Castillo",
+    "secondLastName":"Perales",
+    "address":"Av Xola 134 Col del Valle",
+    "phone":"5556172834",
+    "companyName":"Embotelladora Coca-cola",
+    "area":"Contabilidad",
+    "businessSector":"Líquidos azucarados"
+}

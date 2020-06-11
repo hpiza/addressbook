@@ -1,3 +1,6 @@
+
+let host = window.location.hostname;
+
 btnFind.onclick = loadContactData;
 
 let contactList = [];
@@ -5,7 +8,7 @@ let contactList = [];
 function loadContactData() {
   name = txtNameToFind.value;
   let xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost:8085/family/search/' + name);
+  xhr.open('GET', 'http://' + host + ':8085/family/search/' + name);
   xhr.send();
   xhr.onload = function () {
     if (xhr.status == 200) {
@@ -77,7 +80,7 @@ function saveContactData() {
   if (inAdditionMode) {
     let familyContact = new FamilyContact(0, name, firstLastName, secondLastname, phone, address, friend);
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8085/family/add');
+    xhr.open('POST', 'http://' + host + ':8085/family/add');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(familyContact));
     xhr.onload = function () {
@@ -96,7 +99,7 @@ function saveContactData() {
     currFamilyContact.address = address;
     currFamilyContact.friend = friend;
     let xhr = new XMLHttpRequest();
-    xhr.open('PUT', 'http://localhost:8085/family/update/' + currFamilyContact.id);
+    xhr.open('PUT', 'http://' + host + ':8085/family/update/' + currFamilyContact.id);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(currFamilyContact));
     xhr.onload = function () {
@@ -127,7 +130,7 @@ function editContactData(id) {
 
 function deleteContactData(id) {
   let xhr = new XMLHttpRequest();
-  xhr.open('DELETE', 'http://localhost:8085/family/delete/' + id);
+  xhr.open('DELETE', 'http://' + host + ':8085/family/delete/' + id);
   xhr.send(null);
   xhr.onload = function () {
     if (xhr.status == "200") {

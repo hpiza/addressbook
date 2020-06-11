@@ -1,11 +1,12 @@
-btnFind.onclick = loadContactData;
 
+let host = window.location.hostname;
+btnFind.onclick = loadContactData;
 let contactList = [];
 
 function loadContactData() {
   name = txtNameToFind.value;
   let xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost:8085/work/search/' + name);
+  xhr.open('GET', 'http://' + host + ':8085/work/search/' + name);
   xhr.send();
   xhr.onload = function () {
     if (xhr.status == 200) {
@@ -82,7 +83,7 @@ function saveContactData() {
   if (inAdditionMode) {
     let workContact = new WorkContact(0, name, firstLastName, secondLastname, phone, address, companyName, area, businessSector);
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8085/work/add');
+    xhr.open('POST', 'http://' + host + ':8085/work/add');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(workContact));
     xhr.onload = function () {
@@ -103,7 +104,7 @@ function saveContactData() {
     currWorkContact.area = area;
     currWorkContact.businessSector = businessSector;
     let xhr = new XMLHttpRequest();
-    xhr.open('PUT', 'http://localhost:8085/work/update/' + currWorkContact.id);
+    xhr.open('PUT', 'http://' + host + ':8085/work/update/' + currWorkContact.id);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(currWorkContact));
     xhr.onload = function () {
@@ -135,7 +136,7 @@ function editContactData(id) {
 
 function deleteContactData(id) {
   let xhr = new XMLHttpRequest();
-  xhr.open('DELETE', 'http://localhost:8085/work/delete/' + id);
+  xhr.open('DELETE', 'http://' + host + ':8085/work/delete/' + id);
   xhr.send(null);
   xhr.onload = function () {
     if (xhr.status == "200") {
